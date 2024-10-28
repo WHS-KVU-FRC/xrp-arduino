@@ -3,18 +3,21 @@
 
 #include "Arduino.h"
 
+#include <stdint.h>
+
 namespace xrp {
 class XRPMotor {
  public:
-  XRPMotor(int dir_pin, int speed_pin, bool inverted = false);
-  config();
-  set_effort(double effort);
+  XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted = false);
+  void config();
+  void set_effort(double effort);
+  
  private:
-  int dir_pin;
-  int speed_pin;
+  uint8_t dir_pin;
+  uint8_t speed_pin;
   bool inverted;
   // MotorDirection direction = kForward;
-  void set_direction(short direction);
+  void set_direction(uint8_t direction);
 };
 
 // enum MotorDirection {

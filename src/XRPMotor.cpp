@@ -1,15 +1,16 @@
 #include "Arduino.h"
 #include "XRPMotor.h"
 
-#include <cmath>
+#include <stdint.h>
+#include <math.h>
 
-xrp::XRPMotor::XRPMotor(int dir_pin, int speed_pin, bool inverted) {
+xrp::XRPMotor::XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted) {
   this->dir_pin = dir_pin;
   this->speed_pin = speed_pin;
   this->inverted = inverted;
 }
 
-xrp::XRPMotor::config() {
+void xrp::XRPMotor::config() {
   pinMode(dir_pin, OUTPUT);
   pinMode(speed_pin, OUTPUT);
   
@@ -24,7 +25,7 @@ xrp::XRPMotor::config() {
  * @param effort  The speed to set the motor at.  Value must be between [-1, 1], where positive
  *                values indicate forwards movement.
  */
-xrp::XRPMotor::set_effort(double effort) {
+void xrp::XRPMotor::set_effort(double effort) {
   if (effort >= 0) {
     set_direction(LOW);
   } else {
@@ -39,7 +40,7 @@ xrp::XRPMotor::set_effort(double effort) {
   analogWrite(speed_pin, analog_effort);
 }
 
-xrp::XRPMotor::set_direction(short direction) {
+void xrp::XRPMotor::set_direction(uint8_t direction) {
   if (inverted) {
     direction = !direction;
   }
