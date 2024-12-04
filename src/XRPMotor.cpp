@@ -6,13 +6,13 @@
 
 // Change #2 for teaching
 
-xrp::XRPMotor::XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted) {
+XRPMotor::XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted) {
   this->dir_pin = dir_pin;
   this->speed_pin = speed_pin;
   this->inverted = inverted;
 }
 
-void xrp::XRPMotor::config() {
+void XRPMotor::config() {
   pinMode(dir_pin, OUTPUT);
   pinMode(speed_pin, OUTPUT);
   
@@ -27,7 +27,7 @@ void xrp::XRPMotor::config() {
  * @param effort  The speed to set the motor at.  Value must be between [-1, 1], where positive
  *                values indicate forwards movement.
  */
-void xrp::XRPMotor::set_effort(double effort) {
+void XRPMotor::set_effort(double effort) {
   if (effort >= 0) {
     set_direction(LOW);
   } else {
@@ -42,7 +42,7 @@ void xrp::XRPMotor::set_effort(double effort) {
   analogWrite(speed_pin, analog_effort);
 }
 
-void xrp::XRPMotor::set_direction(uint8_t direction) {
+void XRPMotor::set_direction(uint8_t direction) {
   if (inverted) {
     direction = !direction;
   }

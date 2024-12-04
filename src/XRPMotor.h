@@ -5,7 +5,6 @@
 
 #include <stdint.h>
 
-namespace xrp {
 class XRPMotor {
  public:
   XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted = false);
@@ -24,6 +23,5 @@ class XRPMotor {
 //   kBackward = LOW,
 //   kForward = HIGH
 // };
-}  // namespace xrp
 
 #endif
