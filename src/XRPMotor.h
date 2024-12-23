@@ -2,7 +2,6 @@
 #define _XRPMOTOR_H_
 
 #include "Arduino.h"
-
 #include <stdint.h>
 
 /**
@@ -58,13 +57,7 @@ class XRPMotor {
   uint8_t _dir_pin;
   uint8_t _speed_pin;
   bool _inverted;
-  // MotorDirection direction = kForward;
   void _set_direction(uint8_t direction);
 };
 
-// enum MotorDirection {
-//   kBackward = LOW,
-//   kForward = HIGH
-// };
-
-#endif
+#endif  // #ifndef _XRPMOTOR_H_
