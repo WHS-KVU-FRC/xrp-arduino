@@ -12,11 +12,11 @@ class XRPMotor {
   void set_effort(double effort);
   
  private:
-  uint8_t dir_pin;
-  uint8_t speed_pin;
-  bool inverted;
+  uint8_t _dir_pin;
+  uint8_t _speed_pin;
+  bool _inverted;
   // MotorDirection direction = kForward;
-  void set_direction(uint8_t direction);
+  void _set_direction(uint8_t direction);
 };
 
 // enum MotorDirection {

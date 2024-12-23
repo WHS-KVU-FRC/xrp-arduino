@@ -7,19 +7,19 @@
 // Change #2 for teaching
 
 XRPMotor::XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted) {
-  this->dir_pin = dir_pin;
-  this->speed_pin = speed_pin;
-  this->inverted = inverted;
+  _dir_pin = dir_pin;
+  _speed_pin = speed_pin;
+  _inverted = inverted;
 }
 
 void XRPMotor::config() {
-  pinMode(dir_pin, OUTPUT);
-  pinMode(speed_pin, OUTPUT);
+  pinMode(_dir_pin, OUTPUT);
+  pinMode(_speed_pin, OUTPUT);
   
   // assuming that LOW means fowards, and HIGH means reverse
   // TODO: test on actual robot what direction LOW and HIGH are
   // if inverted is true, then dir_pin is set to HIGH, which is backwards motion
-  digitalWrite(dir_pin, inverted);
+  digitalWrite(_dir_pin, _inverted);
 }
 
 /** Sets the effort of the motor.  It handles backwards motion by switching the direction
@@ -29,9 +29,9 @@ void XRPMotor::config() {
  */
 void XRPMotor::set_effort(double effort) {
   if (effort >= 0) {
-    set_direction(LOW);
+    _set_direction(LOW);
   } else {
-    set_direction(HIGH);
+    _set_direction(HIGH);
   }
 
   // point-slope form to map [0,1] to [0,255]
@@ -39,12 +39,12 @@ void XRPMotor::set_effort(double effort) {
   // we are keeping all speeds positive and
   // merely switching direction
   double analog_effort = 255.0 * abs(effort);
-  analogWrite(speed_pin, analog_effort);
+  analogWrite(_speed_pin, analog_effort);
 }
 
-void XRPMotor::set_direction(uint8_t direction) {
-  if (inverted) {
+void XRPMotor::_set_direction(uint8_t direction) {
+  if (_inverted) {
     direction = !direction;
   }
-  digitalWrite(dir_pin, direction);
+  digitalWrite(_dir_pin, direction);
 }
