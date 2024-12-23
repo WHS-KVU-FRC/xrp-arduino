@@ -27,8 +27,8 @@ void XRPMotor::config() {
  * @param effort  The speed to set the motor at.  Value must be between [-1, 1], where positive
  *                values indicate forwards movement.
  */
-void XRPMotor::set_effort(double effort) {
-  if (effort >= 0) {
+void XRPMotor::set_effort(double speed) {
+  if (speed >= 0) {
     _set_direction(LOW);
   } else {
     _set_direction(HIGH);
@@ -38,9 +38,18 @@ void XRPMotor::set_effort(double effort) {
   // note that we only need to map [0,1] since
   // we are keeping all speeds positive and
   // merely switching direction
-  double analog_effort = 255.0 * abs(effort);
+  double analog_effort = 255.0 * abs(speed);
   analogWrite(_speed_pin, analog_effort);
 }
+
+void XRPMotor::set_inverted(bool inverted) {
+  _inverted = inverted;
+}
+
+bool XRPMotor::get_inverted() const {
+  return _inverted;
+}
+
 
 void XRPMotor::_set_direction(uint8_t direction) {
   if (_inverted) {
@@ -48,3 +57,4 @@ void XRPMotor::_set_direction(uint8_t direction) {
   }
   digitalWrite(_dir_pin, direction);
 }
+
