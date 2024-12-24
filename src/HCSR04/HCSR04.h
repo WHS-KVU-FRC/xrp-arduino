@@ -1,13 +1,14 @@
-/*
-  HCSR04 - Library for arduino, for HC-SR04 ultrasonic distance sensor.
-  Created by Martin Sosic, June 11, 2016.
-*/
-
 #ifndef HCSR04_H
 #define HCSR04_H
 
 #include "Arduino.h"
 
+/**
+ * HCSR04 - Library for arduino, for HC-SR04 ultrasonic distance sensor.
+ * Find the Github repository at {@link https://github.com/Martinsos/arduino-lib-hc-sr04}
+ * @author Martin Sosic
+ * @version 2.0.0, 06/11/2016
+ */
 class UltraSonicDistanceSensor {
  public:
     /**
