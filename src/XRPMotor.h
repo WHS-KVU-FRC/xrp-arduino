@@ -5,7 +5,8 @@
 #include <stdint.h>
 
 /**
- * A class to work with a motor plugged into the XRP
+ * \class XRPMotor
+ * \brief A class to work with a motor plugged into the XRP
  */
 class XRPMotor {
  public:

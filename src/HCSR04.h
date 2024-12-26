@@ -4,8 +4,8 @@
 #include "Arduino.h"
 
 /**
- * HCSR04 - Library for arduino, for HC-SR04 ultrasonic distance sensor.
  * Find the Github repository at {@link https://github.com/Martinsos/arduino-lib-hc-sr04}
+ * \brief   HCSR04 - Library for arduino, for HC-SR04 ultrasonic distance sensor.
  * @author Martin Sosic
  * @version 2.0.0, 06/11/2016
  */

@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include <math.h>
 
-// Change #2 for teaching
-
 XRPMotor::XRPMotor(uint8_t dir_pin, uint8_t speed_pin, bool inverted) {
   _dir_pin = dir_pin;
   _speed_pin = speed_pin;
