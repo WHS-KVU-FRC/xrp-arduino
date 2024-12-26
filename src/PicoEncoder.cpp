@@ -8,7 +8,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-#include <pico_encoder.pio.h>
+#include <PicoEncoder/pico_encoder.pio.h>
 #include <hardware/clocks.h>
 #include <hardware/gpio.h>
 #include <hardware/sync.h>
@@ -270,8 +270,9 @@ static bool pico_encoder_claim_pio(PIO pio)
   return true;
 }
 
-int PicoEncoder::begin(int firstPin, bool pullUp)
+int PicoEncoder::begin(int firstPin, uint resolution, bool pullUp)
 {
+  _resolution = resolution;
   int forward, gpio_pin;
 
   // the first encoder needs to load a PIO with the PIO code
@@ -440,4 +441,4 @@ void PicoEncoder::update(void)
 
 #else // ARCH
 #error PicoEncoder library requires a PIO peripheral and only works on the RP2040 architecture
-#endif
+#endif  // #ifdef ARDUINO_ARCH_RP2040
