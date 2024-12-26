@@ -101,7 +101,7 @@ class PicoEncoder
      * \param resolution  The resolution of the encoder in encoder counts
      *                    per revolution.
      */
-    void setResolution(int resolution) {
+    void setResolution(uint resolution) {
       _resolution = resolution;
     }
 
@@ -139,7 +139,7 @@ class PicoEncoder
 
     // current position in raw quadrature steps
     uint step;
-    int _resolution = 1;
+    uint _resolution = 1;
     double _conversionFactor = 1.0;
     // configuration data:
     uint calibration_data[4]; // relative phase sizes
