@@ -62,7 +62,7 @@ class PioEncoder {
    *            with this.
    * \param max_step_rate (Optional) The maximum stepping rate.  Defaulted to 0.
    */
-  PioEncoder(const uint8_t pin, const uint16_t resolution = 1, const bool flip = false, const int zero_offset = 0, const uint8_t count_mode = COUNT_4X,
+  PioEncoder(const uint8_t pin, const bool flip = false, const int zero_offset = 0, const uint8_t count_mode = COUNT_4X,
             PIO pio = pio0, const uint sm = -1, const int max_step_rate = 0);
 
   /**
@@ -113,32 +113,18 @@ class PioEncoder {
   }
 
   /**
-   * Sets the resolution of the encoder.  This should be in units of
-   * encoder ticks per revolution/rotation of the wheel (or shaft the
-   * encoder is mounted on).
-   * 
-   * \param resolution  The resolution of the encoder in encoder counts
-   *                    per revolution.
-   */
-  void setResolution(uint16_t resolution) {
-    _resolution = resolution;
-  }
-
-  /**
-   * Returns the position of the encoder.  The default unit is revolutions
-   * or rotations (of the wheel).  The units returned can be changed by the
-   * conversion factor.
+   * Returns the position of the encoder.  The default unit is encoder counts.
+   * The units returned can be changed by the conversion factor.
    * \see setConversionFactor
    * 
    * \return  The position of the encoder in units given by the
    *          conversion factor.
    */
   double getPosition() {
-    return getCount() * _conversionFactor / _resolution;
+    return getCount() * _conversionFactor;
   }
   
  private:
-  uint16_t _resolution = 1;
   double _conversionFactor = 1.0;
 
   uint8_t pin;

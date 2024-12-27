@@ -20,9 +20,8 @@
 uint PioEncoder::offset;
 bool PioEncoder::not_first_instance;
 
-PioEncoder::PioEncoder(const uint8_t pin, const uint16_t resolution, const bool flip, const int zero_offset, const uint8_t count_mode, PIO pio, const uint sm, const int max_step_rate){
+PioEncoder::PioEncoder(const uint8_t pin, const bool flip, const int zero_offset, const uint8_t count_mode, PIO pio, const uint sm, const int max_step_rate){
     static uint offset;
-    _resolution = resolution;
     this->pin = pin;
     this->pio = pio;
     this->sm = sm;
