@@ -12,6 +12,9 @@ UltraSonicDistanceSensor::UltraSonicDistanceSensor(
     this->echoPin = echoPin;
     this->maxDistanceCm = maxDistanceCm;
     this->maxTimeoutMicroSec = maxTimeoutMicroSec;
+}
+
+void UltraSonicDistanceSensor::begin() const {
     pinMode(triggerPin, OUTPUT);
     pinMode(echoPin, INPUT);
 }

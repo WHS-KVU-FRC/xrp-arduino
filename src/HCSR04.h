@@ -26,6 +26,11 @@ class UltraSonicDistanceSensor {
     UltraSonicDistanceSensor(byte triggerPin, byte echoPin, unsigned short maxDistanceCm = 400, unsigned long maxTimeoutMicroSec = 0);
 
     /**
+     * Configures the hardware for the sensor on the microcontroller.  Call this method within `setup()`.
+     */
+    void begin() const;
+
+    /**
      * Measures distance by sending ultrasonic waves and measuring time it takes them
      * to return.
      * @returns Distance in centimeters, or negative value if distance is greater than 400cm.
